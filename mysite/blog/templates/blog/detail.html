@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="header">
+
+    </div>
+    <div id="main">
+        <div id="main_article">
+            <div id="main_article_title">
+                <h1>
+                    {{article.article_name}}
+                </h1>
+            </div>
+            <div id="main_article_text">
+                {{article.article_text}}
+            </div>
+        </div>
+        <div id="main_comment">
+            <div id="main_comment_form">
+                <form method="post">
+                    {% csrf_token %}
+                    <p><label for="main_comment_form_author">Имя</label><input type="text" name="author" id="main_comment_form_author",></p>
+                    <p><label for="main_comment_form_text">Текст</label><textarea name="text" id="main_comment_form_text"></textarea></p>
+                    <p><input type="submit" value="Отправить"></p>
+                </form>
+            </div>
+            <div id="main_comment_list">
+                {% if comments_list %}
+                    <ul>
+                        {% for comment in comments_list %}
+                        <li>
+                            <div id="main_comment_list_author">
+                                {{comment.comment_author}}
+                            </div>
+                            <div id="main_comment_list_text">
+                                {{comment.comment_text}}
+                            </div>
+                            <div id="main_comment_list_date">
+                                {{comment.comment_date}}
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <div id="main_comment_not">
+                        <p>no</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+
+    </div>
+</body>
+</html>

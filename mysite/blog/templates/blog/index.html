@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="header">
+
+    </div>
+    <div id="main">
+        {% if latest_articles_list %}
+            <ul>
+                {% for article in latest_articles_list %}
+                <li>
+                    <a href="{% url 'blog:detail' article.id %}">{{ article.article_name }}</a>
+                    <div>
+                        {{article.article_text}}
+                    </div>
+                </li>
+                {% endfor %}
+
+        {% else %}
+                <p>Pages not found</p>
+
+        {% endif %}
+        </ul>
+    </div>
+    <div id="footer">
+
+    </div>
+</body>
+</html>
