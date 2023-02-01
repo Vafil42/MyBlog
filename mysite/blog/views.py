@@ -14,6 +14,16 @@ def index(request):
     }
     return render(request, 'blog/index.html', context)
 
+def about(request):
+    about_article_list = Article.objects.filter(article_teg='about')
+    context = {
+        'about_article_list': about_article_list
+    }
+    return render(request, 'blog/about.html', context)
+
+def contact(request):
+    return render(request, 'blog/contact.html')
+
 def detail(request, article_id):
     article = get_object_or_404(Article, pk=article_id)
     comments_list = Comment.objects.filter(comment_article_id=article.id).order_by('-comment_date')

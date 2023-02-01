@@ -6,20 +6,32 @@
 </head>
 <body>
     <div id="header">
-
+        <!--<img id="logo" src="" alt="">-->
+        <h1>
+            Vafil 42
+        </h1>
+        <h2>
+            My blog
+        </h2>
+        <div id="nav">
+            <a id="about_link" href="{% url 'blog:about' %}">About</a>
+            <a id="blog_link" href="{% url 'blog:blog' %}">Blog</a>
+            <a id="contact_link" href="{% url 'blog:contact' %}">Contact</a>
+        </div>
+    </div>
     </div>
     <div id="main">
-        <div id="main_article">
-            <div id="main_article_title">
+        <div id="article">
+            <div id="article_title">
                 <h1>
                     {{article.article_name}}
                 </h1>
             </div>
-            <div id="main_article_text">
+            <div id="article_text">
                 {{article.article_text}}
             </div>
         </div>
-        <div id="main_comment">
+        <div id="comment">
             <div id="main_comment_form">
                 <form method="post">
                     {% csrf_token %}
@@ -28,25 +40,25 @@
                     <p><input type="submit" value="Отправить"></p>
                 </form>
             </div>
-            <div id="main_comment_list">
+            <div id="comment_list">
                 {% if comments_list %}
                     <ul>
                         {% for comment in comments_list %}
                         <li>
-                            <div id="main_comment_list_author">
+                            <div id="comment_author">
                                 {{comment.comment_author}}
                             </div>
-                            <div id="main_comment_list_text">
+                            <div id="comment_text">
                                 {{comment.comment_text}}
                             </div>
-                            <div id="main_comment_list_date">
+                            <div id="comment_date">
                                 {{comment.comment_date}}
                             </div>
                         </li>
                         {% endfor %}
                     </ul>
                 {% else %}
-                    <div id="main_comment_not">
+                    <div id="comment_not">
                         <p>no</p>
                     </div>
                 {% endif %}
@@ -54,7 +66,7 @@
         </div>
     </div>
     <div id="footer">
-
+        <p6>Its real shit</p6>
     </div>
 </body>
 </html>

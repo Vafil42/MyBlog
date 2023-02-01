@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="header">
+        <!--<img id="logo" src="" alt="">-->
+        <h1>
+            Vafil 42
+        </h1>
+        <h2>
+            My blog
+        </h2>
+        <div id="nav">
+            <a id="about_link" href="{% url 'blog:about' %}">About</a>
+            <a id="blog_link" href="{% url 'blog:blog' %}">Blog</a>
+            <a id="contact_link" href="{% url 'blog:contact' %}">Contact</a>
+        </div>
+    </div>
+    <div id="main">
+        {% if about_articles_list %}
+        <ul>
+            <div id="article">
+                {% for article in about_articles_list %}
+                    <a id="article_name" href="{% url 'blog:about' article.id %}">{{ article.article_name }}</a>
+                    <div id="article_text">
+                        {{article.article_text}}
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div id="article_404">
+                <p>Pages not found</p>
+            </div>
+        {% endif %}
+        </ul>
+    </div>
+    <div id="footer">
+        <p6>Its real shit</p6>
+    </div>
+</body>
+</html>
